@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nessa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================
+   RESET & BASE
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Montserrat', sans-serif;
+  background: #0c0207;
+  color: #fff;
+  scroll-behavior: smooth;
+}
+
+section {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* =====================================================
+   GLOBAL ANIMATIONS
+===================================================== */
+.fade {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: 1.2s cubic-bezier(.19,1,.22,1);
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+.hero {
+  background:
+    radial-gradient(circle at top, #ffb3d9, #d9468f, #0c0207);
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.05),
+    rgba(0,0,0,0.9)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.hero p {
+  margin-top: 25px;
+  font-size: 1.4rem;
+  opacity: 0.85;
+}
+
+/* =====================================================
+   SCROLL HINT
+===================================================== */
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* =====================================================
+   SECTION THEMES
+===================================================== */
+.dark-pink {
+  background: linear-gradient(180deg,#0c0207,#1b0510,#2b071a);
+}
+
+.mid-pink {
+  background: linear-gradient(180deg,#2b071a,#4a0f2d,#6b123f);
+}
+
+/* =====================================================
+   CARDS
+===================================================== */
+.card {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(30px);
+  border-radius: 26px;
+  padding: 70px;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.45);
+  margin-bottom: 80px;
+}
+
+.card h2 {
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+}
+
+.card p {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  max-width: 900px;
+  opacity: 0.9;
+}
+
+/* =====================================================
+   HIGHLIGHT TEXT
+===================================================== */
+.highlight {
+  background: linear-gradient(to right,#f9a8d4,#f472b6);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* =====================================================
+   QUOTE WALL
+===================================================== */
+.quote-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 40px;
+}
+
+.quote {
+  padding: 40px;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.12),
+    rgba(255,255,255,0.04)
+  );
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* =====================================================
+   NETFLIX ROW
+===================================================== */
+.row {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.row::-webkit-scrollbar {
+  height: 6px;
+}
+.row::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 10px;
+}
+
+.tile {
+  min-width: 320px;
+  height: 200px;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    #f472b6,
+    #9d174d
+  );
+  padding: 30px;
+  display: flex;
+  align-items: flex-end;
+  font-weight: 600;
+  transition: transform .4s ease;
+}
+
+.tile:hover {
+  transform: scale(1.05);
+}
+
+/* =====================================================
+   TIMELINE
+===================================================== */
+.timeline {
+  border-left: 2px solid rgba(255,255,255,0.3);
+  padding-left: 40px;
+}
+
+.time {
+  margin-bottom: 40px;
+}
+
+.time h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.time p {
+  opacity: 0.8;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+.footer {
+  padding: 150px 10%;
+  text-align: center;
+  background: radial-gradient(circle at bottom,#ff9acb,#0c0207);
+}
+
+.footer h2 {
+  font-size: 3rem;
+}
+
+.footer p {
+  margin-top: 20px;
+  opacity: 0.8;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 768px) {
+  section {
+    padding: 90px 6%;
+  }
+  .card {
+    padding: 40px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content fade">
+    <h1>Nessa Azhaara Khairani</h1>
+    <p>everything here exists because I miss you.</p>
+  </div>
+  <div class="scroll-hint">scroll ↓</div>
+</section>
+
+<!-- SECTION 1 -->
+<section class="dark-pink">
+  <div class="card fade">
+    <h2>Aku kangen <span class="highlight">Nessa Azhaara Khairani</span></h2>
+    <p>
+      Ini bukan halaman besar, tapi rasanya panjang.
+      Karena setiap scroll, isinya kamu.
+    </p>
+  </div>
+</section>
+
+<!-- SECTION 2 QUOTES -->
+<section class="dark-pink">
+  <h2 class="fade">About you</h2>
+  <div class="quote-wall">
+    <div class="quote fade">Prettiest girl.</div>
+    <div class="quote fade">Cutest girl.</div>
+    <div class="quote fade">Sweetest girl.</div>
+    <div class="quote fade">Smartest girl.</div>
+    <div class="quote fade">Kindest girl.</div>
+    <div class="quote fade">Brightest girl.</div>
+  </div>
+</section>
+
+<!-- SECTION 3 NETFLIX ROW -->
+<section class="mid-pink">
+  <h2 class="fade">Moments</h2>
+  <div class="row fade">
+    <div class="tile">I miss u double triple quadrupel quintupel sextuple septuple octuple nonple decuple XL</div>
+    <div class="tile">I miss u so much</div>
+    <div class="tile">I miss u double triple quadrupel quintupel sextuple septuple octuple nonple decuple XL</div>
+    <div class="tile">I miss u so much</div>
+  </div>
+</section>
+
+<!-- SECTION 4 TIMELINE -->
+<section class="dark-pink">
+  <div class="card fade">
+    <h2>Timeline pikiran</h2>
+    <div class="timeline">
+      <div class="time">
+        <h4>setiap hari</h4>
+        <p>sering kepikiran.</p>
+      </div>
+      <div class="time">
+        <h4>Sekarang</h4>
+        <p>masi kepikiran terus</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer fade">
+  <h2>Nessa Azhaara Khairani</h2>
+  <p>kalau kamu sampai sejauh ini, berarti kamu ngerti.</p>
+</div>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('show');
+  });
+},{threshold:0.15});
+
+document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
